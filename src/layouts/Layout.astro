@@ -5,7 +5,10 @@ export interface Props {
 
 const { title } = Astro.props;
 
-import Scene from '../components/Scene.vue';
+import Scene from "@/components/Scene.vue"
+import { PageTransition } from 'astro-page-transition';
+import { HoverPrefetch } from 'astro-hover-prefetch';
+
 ---
 
 <!DOCTYPE html>
@@ -18,11 +21,14 @@ import Scene from '../components/Scene.vue';
 		<title>{title}</title>
 	</head>
 	<body>
+		<PageTransition speed={500} color="white" zIndex={99} />
+		<HoverPrefetch max={8} />
+
 		<slot />
 		<Scene client:only/>
 	</body>
 </html>
-<style is:global>
+<style is:global> 
 	:root {
 		--accent: 124, 58, 237;
 		--accent-gradient: linear-gradient(45deg, rgb(var(--accent)), #da62c4 30%, white 60%);
