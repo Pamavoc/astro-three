@@ -1,5 +1,5 @@
 import { GridHelper, LineBasicMaterial, Color } from 'three'
-import gsap from 'gsap'
+import { gsap } from 'gsap';
 
 export default class Background {
 

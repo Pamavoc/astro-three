@@ -1,5 +1,5 @@
 import{ MeshBasicMaterial, Color, Mesh, PlaneGeometry} from 'three';
-import gsap from 'gsap'
+import { gsap } from 'gsap';
 
 export default class Projects {
     images: any

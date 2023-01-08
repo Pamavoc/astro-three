@@ -9,6 +9,7 @@ import Sky from '@/classes/webgl/scene/Sky';
 import Background from '@/classes/webgl/scene/Background';
 import HeroImage from '@/classes/webgl/scene/HeroImage';
 import Projects from '@/classes/webgl/scene/Projects';
+import useScroll from '@/composables/useScroll';
 
 export default class BaseScene extends Scene{
 
@@ -65,21 +66,17 @@ export default class BaseScene extends Scene{
 
     const { lenis } = useScroll()
 
-
-    const route = useRoute();
-    console.log(route.fullPath)
-
-    if(route.fullPath === '/' && !this.image) {
+    if(window.location.pathname === '/' && !this.image) {
     
-      this.image = new HeroImage({ webgl: webgl, scene: this})
+     // this.image = new HeroImage({ webgl: webgl, scene: this})
     }
 
 
 
     lenis.on('scroll', ({ scroll, limit }) => {
 
-      if(route.fullPath === '/' && this.image) {
-        this.image.mesh.position.y = scroll * 0.005;
+      if(window.location.pathname === '/' && this.image) {
+       // this.image.mesh.position.y = scroll * 0.005;
       }
 		 
       // this.back.gridHelper.position.y = scroll * 0.008;

@@ -1,6 +1,6 @@
 
 import { AnimationClip } from 'three'
-import gsap from 'gsap'
+import { gsap } from 'gsap';
 import mitt from 'mitt'
 import { ObjectType } from '@/interfaces/ObjectType'
 
