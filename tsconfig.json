@@ -7,5 +7,6 @@
       "@/*": ["src/*"],
     }
   },
+  "allowJs": true,
   "exclude": ["src/assets/glsl/"]
 }

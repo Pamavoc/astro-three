@@ -7,7 +7,6 @@ import Renderer from '@/classes/webgl/base/Renderer';
 import Loader from '@/classes/webgl/utils/Loader';
 import BaseScene from '@/classes/webgl/scene/Scene';
 import Materials from '@/classes/webgl/base/Materials';
-import Stats from '@/classes/webgl/utils/Stats';
 import useAnimations from '@/composables/useAnimations';
 import Experience from '@/classes/Experience';
 
@@ -27,7 +26,6 @@ export default class WebGL {
   height: number;
   debug: boolean;
   params: ObjectType;
-  stats: Stats
 
   raycast: Raycaster;
   emitter: any;
@@ -83,7 +81,6 @@ export default class WebGL {
       this.camera.tweak()
       this.scene.postProcess.tweak()
       this.materials.tweak()
-      this.stats = new Stats(this)
     }
 
   }
@@ -141,7 +138,7 @@ export default class WebGL {
     }
 
     if(this.debug) {
-      this.stats.update()
+     
     }
 
     // Scene

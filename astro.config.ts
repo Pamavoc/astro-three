@@ -1,5 +1,6 @@
 import { defineConfig } from 'astro/config';
 import glsl from 'vite-plugin-glsl';
+import compressor from "astro-compressor";
 
 // https://astro.build/config
 import vue from "@astrojs/vue";
@@ -11,8 +12,6 @@ import sitemap from "@astrojs/sitemap";
 import prefetch from "@astrojs/prefetch";
 
 // https://astro.build/config
-import partytown from "@astrojs/partytown";
-
 // https://astro.build/config
 import mdx from "@astrojs/mdx";
 
@@ -20,13 +19,10 @@ import mdx from "@astrojs/mdx";
 import compress from "astro-compress";
 
 // https://astro.build/config
+
+// https://astro.build/config
 export default defineConfig({
-  integrations: [vue(), sitemap(), prefetch(), partytown({
-    config: {
-      debug: true,
-      forward: ["dataLayer.push"]
-    }
-  }), mdx(), compress()],
+  integrations: [vue(), sitemap(), prefetch(), mdx(), compress(), compressor()],
   vite: {
     plugins: [glsl()]
   }

@@ -5,14 +5,11 @@
 </template>
 <script setup lang="ts">
 import { onMounted, onUnmounted } from 'vue'
-// import Experience from "@/classes/Experience";
 import useRAF from "@/composables/useRAF";
 import mitt from 'mitt'
-
-// const emitter = mitt()
 onMounted(async () => {
-    const module = await import('@/classes/Experience').then((m) => 
-    
+
+    await import('@/classes/Experience').then((m) => 
        {
         const emitter = mitt()
         const raf = useRAF();
@@ -22,20 +19,11 @@ onMounted(async () => {
         });
        }
     );
-    
-  
-
-    // const experience = new Experience({ emitter: emitter });
-    //    raf.subscribe('WebGL', () => {
-    //      experience.webgl.update();
-    //   });
- 
-    //document.querySelector('.canvas-container').appendChild(renderer.domElement)
 })
 
 onUnmounted(async ()=> {
-    // const raf = useRAF();
-    // raf.unsubscribe('WebGL');
+    const raf = useRAF();
+    raf.unsubscribe('WebGL');
 })
 
 </script>

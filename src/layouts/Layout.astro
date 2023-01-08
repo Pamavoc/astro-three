@@ -5,10 +5,11 @@ export interface Props {
 
 const { title } = Astro.props;
 
+import SectionHome from "@/components/SectionHome.vue";
 import Scene from "@/components/Scene.vue"
-
+import Cursor from "@/components/Cursor.vue";
 import { PageTransition } from 'astro-page-transition';
-import { HoverPrefetch } from 'astro-hover-prefetch';
+
 
 ---
 
@@ -23,23 +24,12 @@ import { HoverPrefetch } from 'astro-hover-prefetch';
 	</head>
 	<body>
 		<PageTransition speed={500} zIndex={99} />
-		<HoverPrefetch max={8} />
-	
+		<SectionHome />
+		<Cursor client:media="(min-width: 1200px)" />
 		<slot />
-		 <Scene client:only/> 
+		<Scene client:visible/> 
 	</body>
 </html>
-<style is:global> 
-	:root {
-		--accent: 124, 58, 237;
-		--accent-gradient: linear-gradient(45deg, rgb(var(--accent)), #da62c4 30%, white 60%);
-	}
-	html {
-		font-family: system-ui, sans-serif;
-		background-color: #F6F6F6;
-	}
-	code {
-		font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
-			Bitstream Vera Sans Mono, Courier New, monospace;
-	}
+<style is:global lang="scss"> 
+	
 </style>
