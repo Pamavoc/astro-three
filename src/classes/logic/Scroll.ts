@@ -1,7 +1,7 @@
 import Lenis from '@studio-freight/lenis'
 import { gsap } from 'gsap';
 import mitt from 'mitt';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+// import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import SplitType from 'split-type'
 
 export default class Scroll {
@@ -10,7 +10,7 @@ export default class Scroll {
 	lenis: any
 
 	constructor() {
-		gsap.registerPlugin(ScrollTrigger);
+		// gsap.registerPlugin(ScrollTrigger);
 
 		this.emitter = mitt()
 		
@@ -36,11 +36,11 @@ export default class Scroll {
 		const social = document.querySelectorAll('.social div');
 
 		const tl = gsap.timeline({ 
-			scrollTrigger: {
-				trigger: contact,
-				start: "top center",
-				toggleActions: "play none none reverse",
-			}
+			// scrollTrigger: {
+			// 	trigger: contact,
+			// 	start: "top center",
+			// 	toggleActions: "play none none reverse",
+			// }
 		})
 
 		tl.from(mail.chars, {

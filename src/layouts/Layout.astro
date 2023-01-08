@@ -21,11 +21,11 @@ import { HoverPrefetch } from 'astro-hover-prefetch';
 		<title>{title}</title>
 	</head>
 	<body>
-		<PageTransition speed={500} color="white" zIndex={99} />
+		<PageTransition speed={500} zIndex={99} />
 		<HoverPrefetch max={8} />
 
 		<slot />
-		<Scene client:only/>
+		<Scene client:idle/>
 	</body>
 </html>
 <style is:global> 
