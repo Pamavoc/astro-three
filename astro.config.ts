@@ -1,5 +1,7 @@
 import { defineConfig } from 'astro/config';
 import glsl from 'vite-plugin-glsl';
+import AstroPWA from '@vite-pwa/astro'
+
 
 // https://astro.build/config
 import vue from "@astrojs/vue";
@@ -18,7 +20,7 @@ import mdx from "@astrojs/mdx";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [vue(), sitemap(), prefetch(), partytown({ config: { debug: false, forward: ["dataLayer.push"]  }}), mdx()],
+  integrations: [vue(), sitemap(), prefetch(), partytown({ config: { debug: false, forward: ["dataLayer.push"]  }}), mdx(), AstroPWA()],
   vite: {
     plugins: [
       glsl()

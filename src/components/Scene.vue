@@ -4,8 +4,6 @@
     </div>
 </template>
 <script setup lang="ts">
-
-import { PerspectiveCamera, Scene, Mesh, WebGLRenderer, BoxGeometry, MeshNormalMaterial } from "three";
 import { onMounted, onUnmounted } from 'vue'
 import Experience from "@/classes/Experience";
 import useRAF from "@/composables/useRAF";
