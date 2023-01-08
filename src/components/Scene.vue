@@ -1,47 +1,32 @@
 <template>
-    <div class="canvas-container">
-        <canvas></canvas>
+    <div class="container-canvas">
+        <canvas id="canvas"></canvas>
     </div>
 </template>
 <script setup lang="ts">
 
 import { PerspectiveCamera, Scene, Mesh, WebGLRenderer, BoxGeometry, MeshNormalMaterial } from "three";
-import { onMounted } from 'vue'
+import { onMounted, onUnmounted } from 'vue'
+import Experience from "@/classes/Experience";
+import useRAF from "@/composables/useRAF";
+import mitt from 'mitt'
 
+const emitter = mitt()
+onMounted(async () => {
+    const raf = useRAF();
 
-onMounted(()=> {
-    const camera = new PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 0.01, 10 );
-camera.position.z = 1;
-
-const scene = new Scene();
-
-const geometry = new BoxGeometry( 0.2, 0.2, 0.2 );
-const material = new MeshNormalMaterial();
-
-const mesh = new Mesh( geometry, material );
-scene.add( mesh );
-
-const renderer = new WebGLRenderer( { antialias: true } );
-renderer.setSize( window.innerWidth, window.innerHeight );
-renderer.setAnimationLoop( animation );
-
+    const experience = new Experience({ emitter: emitter });
+       raf.subscribe('WebGL', () => {
+         experience.webgl.update();
+      });
  
-document.querySelector('.canvas-container').appendChild(renderer.domElement)
-
-// animation
-
-// animation
-
-function animation( time ) {
-
-	mesh.rotation.x = time / 2000;
-	mesh.rotation.y = time / 1000;
-
-	renderer.render( scene, camera );
-
-}
+    //document.querySelector('.canvas-container').appendChild(renderer.domElement)
 })
 
+onUnmounted(()=> {
+    const raf = useRAF();
+    raf.unsubscribe('WebGL');
+})
 
 </script>
 <style lang="">
