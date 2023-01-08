@@ -25,7 +25,7 @@ import { HoverPrefetch } from 'astro-hover-prefetch';
 		<HoverPrefetch max={8} />
 
 		<slot />
-		<Scene client:idle/>
+		<Scene client:only/>
 	</body>
 </html>
 <style is:global> 
