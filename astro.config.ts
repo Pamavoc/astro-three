@@ -23,7 +23,7 @@ import compress from "astro-compress";
 export default defineConfig({
   integrations: [vue(), sitemap(), prefetch(), partytown({
     config: {
-      debug: false,
+      debug: true,
       forward: ["dataLayer.push"]
     }
   }), mdx(), compress()],

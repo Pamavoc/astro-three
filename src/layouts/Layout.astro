@@ -6,6 +6,7 @@ export interface Props {
 const { title } = Astro.props;
 
 import Scene from "@/components/Scene.vue"
+
 import { PageTransition } from 'astro-page-transition';
 import { HoverPrefetch } from 'astro-hover-prefetch';
 
@@ -23,9 +24,9 @@ import { HoverPrefetch } from 'astro-hover-prefetch';
 	<body>
 		<PageTransition speed={500} zIndex={99} />
 		<HoverPrefetch max={8} />
-
+	
 		<slot />
-		<Scene client:only/>
+		 <Scene client:idle/> 
 	</body>
 </html>
 <style is:global> 

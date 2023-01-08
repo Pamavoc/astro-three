@@ -1,0 +1,29 @@
+---
+import useRAF from "@/composables/useRAF";
+import mitt from 'mitt'
+
+// const emitter = mitt()
+const load = async () => {
+    const module = await import('@/classes/Experience').then((m) => 
+    
+       {
+    
+
+        if(window) {
+            const emitter = mitt()
+            const raf = useRAF();
+            const experience = new m.default({ emitter: emitter });
+            raf.subscribe('WebGL', () => {
+                experience.webgl.update();
+            });
+        }
+       
+       }
+    );
+}
+
+load();
+---
+<div class="container-canvas">
+    <canvas id="canvas"></canvas>
+</div>
